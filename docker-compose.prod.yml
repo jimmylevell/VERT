@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  levell-portainer-web:
+  levell-vert-web:
     image: ghcr.io/vert-sh/vert:latest
     networks:
       - traefik-public
@@ -9,7 +9,7 @@ services:
       mode: replicated
       replicas: 1
       restart_policy:
-        condition: unless-stopped
+        condition: on-failure
       labels:
         - traefik.enable=true # enable traefik
         - traefik.swarm.network=traefik-public # put it in the same network as traefik
